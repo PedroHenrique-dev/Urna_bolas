@@ -49,12 +49,12 @@ vector<int> contar(vector<Bola> urnaBolas, vector<int> retiradas, vector<string>
             for (auto tipo : cores)
             {
                 ++local;
-                if (urnaBolas[i-1].cor == tipo)
+                if (urnaBolas[i-1].cor.compare(tipo))
                 {
                     break;
                 }
-                
             }
+            
             contagem[local]++;
             j++;
         }
