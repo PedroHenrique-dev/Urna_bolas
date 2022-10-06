@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-vector<int> insertionSort(vector<int> lista)
+vector<int> insertionSort(vector<int> &lista)
 {
     for (size_t i = 0; i < lista.size(); i++)
     {
@@ -27,7 +27,7 @@ vector<int> insertionSort(vector<int> lista)
     return lista;
 }
 
-vector<int> contar(vector<Bola> urnaBolas, vector<int> retiradas, vector<string> cores)
+vector<int> contar(vector<Bola> &urnaBolas, vector<int> &retiradas, vector<string> &cores)
 {
     vector<int> contagem;
     for (size_t i = 0; i < cores.size(); i++)
@@ -49,7 +49,7 @@ vector<int> contar(vector<Bola> urnaBolas, vector<int> retiradas, vector<string>
             for (auto tipo : cores)
             {
                 ++local;
-                if (urnaBolas[i-1].cor.compare(tipo))
+                if (urnaBolas[i-1].cor == tipo)
                 {
                     break;
                 }
@@ -63,7 +63,7 @@ vector<int> contar(vector<Bola> urnaBolas, vector<int> retiradas, vector<string>
     return contagem;
 }
 
-vector<int> retirar(vector<int> urna)
+vector<int> retirar(vector<int> &urna)
 {
     int quantRetiradas;
     cout << "Quantas bolas serão tiradas da urna? ";
@@ -83,7 +83,7 @@ vector<int> retirar(vector<int> urna)
     return retiradas;
 }
 
-void status(vector<Bola> urnaBolas, vector<string> cores, vector<int> contagemTotal)
+void status(vector<Bola> &urnaBolas, vector<string> &cores, vector<int> &contagemTotal)
 {
     cout << "\n\n############################" << endl;
     cout << "##     STATUS DA URNA     ##" << endl;
@@ -97,7 +97,7 @@ void status(vector<Bola> urnaBolas, vector<string> cores, vector<int> contagemTo
     }
 }
 
-void resultado(vector<string> cores, vector<int> contagem)
+void resultado(vector<string> &cores, vector<int> &contagem)
 {
     cout << "\n\n>>    BOLAS RETIRADAS    <<" << endl;
     for (size_t i{0}; i < cores.size(); i++)
@@ -172,7 +172,8 @@ int main(int argc, char const *argv[])
     status(urnaBolas, cores, contagemTotal);
     cout << endl;
 
-    urna = permutation(urna);
+    bool usar_lcg = true;
+    urna = permutation(urna, usar_lcg);
 
     vector<int> retiradas = retirar(urna);
     vector<int> ordRetiradas = insertionSort(retiradas);
