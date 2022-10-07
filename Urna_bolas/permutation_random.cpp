@@ -16,7 +16,7 @@ double numRandom()
     return dist(mt);
 }
 
-double lcg_n1_0_1(int semente)
+double lcg_0_1(int semente)
 {
     int a = 163, c = 151, m = 251;
 
@@ -37,7 +37,7 @@ LIST permutation(LIST x, bool bool_lcg)
     double u;
     if (bool_lcg)
     {
-        u = lcg_n1_0_1(time(NULL));
+        u = lcg_0_1(time(NULL));
     }
     else
     {
